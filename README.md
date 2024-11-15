@@ -27,8 +27,8 @@ This repository contains the **complete frontend application** for the **Aliemon
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-repo/aliemon-tcg-frontend.git
-   cd aliemon-tcg-frontend
+   git clone https://github.com/thirdweb-example/aliemon-tcg-complete-project
+   cd aliemon-tcg-complete-project
    ```
 
 2. **Install dependencies:**
