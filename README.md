@@ -1,59 +1,91 @@
+# Aliemon TCG Frontend Application
 
-![tw-banner](https://github.com/thirdweb-example/next-starter/assets/57885104/20c8ce3b-4e55-4f10-ae03-2fe4743a5ee8)
+This repository contains the **complete frontend application** for the **Aliemon TCG** project, built using the **Thirdweb SDK**. The app provides a seamless interface for managing NFTs, opening packs, and exploring a marketplace.
 
-# thirdweb-next-starter
+---
 
-Starter template to build an onchain react native app with [thirdweb](https://thirdweb.com/) and [next](https://nextjs.org/).
+## Features
+
+- **Wallet Integration**: Easy wallet connections (e.g., MetaMask).
+- **NFT Showcase**: Dynamic display of user-owned NFTs with rich visuals.
+- **Pack Interaction**: Purchase and open packs to unlock new cards.
+- **Marketplace**: Browse, buy, and sell cards and packs with ease.
+- **Responsive Design**: Built with **Tailwind CSS** for mobile and desktop compatibility.
+
+---
+
+## Tech Stack
+
+- **React** (Frontend Framework)
+- **Next.js** (Routing and SSR)
+- **Thirdweb SDK** (Blockchain Integration)
+- **Tailwind CSS** (Styling)
+
+---
 
 ## Installation
 
-Install the template using [thirdweb create](https://portal.thirdweb.com/cli/create)
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-repo/aliemon-tcg-frontend.git
+   cd aliemon-tcg-frontend
+   ```
 
-```bash
-  npx thirdweb create app --next
-```
+2. **Install dependencies:**
+   ```bash
+   yarn install
+   ```
 
-## Environment Variables
+3. **Set up environment variables:**  
+   Create a `.env` file in the root directory and add:
+   ```bash
+   NEXT_PUBLIC_TEMPLATE_CLIENT_ID=""
+   THIRDWEB_SECRET_KEY=""
+   PRIVATE_KEY=""
+   ```
 
-To run this project, you will need to add the following environment variables to your .env file:
+4. **Add contract addresses:**  
+   In `src/const/addresses.ts`, configure the contract addresses:
+   ```typescript
+   export const PACK_CONTRACT_ADDRESS = "";
+   export const CARD_CONTRACT_ADDRESS = "";
+   export const MARKET_CONTRACT_ADDRESS = "";
+   ```
 
-`CLIENT_ID`
+5. **Configure IPFS domains:**  
+   In `next.config.mjs`, add IPFS and external configuration:
+   ```javascript
+   /** @type {import('next').NextConfig} */
+   const nextConfig = {
+     // fixes wallet connect dependency issue https://docs.walletconnect.com/web3modal/nextjs/about#extra-configuration
+     webpack: (config) => {
+       config.externals.push("pino-pretty", "lokijs", "encoding");
+       return config;
+     },
+     images: {
+       domains: ["ipfs.io", "exampleID.ipfscdn.io"],
+     },
+   };
 
-To learn how to create a client ID, refer to the [client documentation](https://portal.thirdweb.com/typescript/v5/client). 
+   export default nextConfig;
+   ```
 
-## Run locally
+6. **Run the development server:**
+   ```bash
+   yarn dev
+   ```
 
-Install dependencies
+---
 
-```bash
-yarn
-```
+## Usage
 
-Start development server
+1. **Connect Wallet:** Log in with a blockchain wallet to access features.
+2. **Browse NFTs:** View your collection and interact with your cards.
+3. **Open Packs:** Redeem packs to unlock new Aliemon cards.
+4. **Marketplace:** Trade cards and packs using the marketplace interface.
 
-```bash
-yarn dev
-```
+---
 
-Create a production build
+## Purpose
 
-```bash
-yarn build
-```
-
-Preview the production build
-
-```bash
-yarn start
-```
-
-## Resources
-
-- [Documentation](https://portal.thirdweb.com/typescript/v5)
-- [Templates](https://thirdweb.com/templates)
-- [YouTube](https://www.youtube.com/c/thirdweb)
-- [Blog](https://blog.thirdweb.com)
-
-## Need help?
-
-For help or feedback, please [visit our support site](https://thirdweb.com/support)
+This completed application provides a robust framework for blockchain-powered gaming using **Thirdweb SDK**. It is fully functional and designed for further customization and expansion.
